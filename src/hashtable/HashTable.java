@@ -10,7 +10,6 @@ public class HashTable<K, V> {
      * K=>key,V =>Value
      * we used Fast,Uniform,Deterministic hash Function to determine the index for each entry
      */
-   
 
     private int tableCapacity;//represent the size of array 
     private double loadFactor; //represent the threshold to resize our array size
@@ -160,7 +159,8 @@ public class HashTable<K, V> {
         if (obj instanceof Integer) {
             return (Integer) obj % tableCapacity;
         }
-        return 0;
+        throw new UnsupportedOperationException("My HashFunction is support Integer Key hashing untill now,sorry ^-^");
+
     }
     /*
      * rehashAll methods
@@ -197,7 +197,21 @@ public class HashTable<K, V> {
     public void clear() {
         this.tableCapacity = 7;
         this.array = new LinkedList[tableCapacity];
+        this.size = 0;
     }
 
-}
+    @Override
+    public String toString() {
+        StringBuilder str=new StringBuilder();
+        str.append("{");
+        for (LinkedList<K, V> array1 : array) {
+            if (array1 != null) {
+                str.append(array1.toString()+",");
+            }
+        }
+        str.append("}");
+        return str.toString();
+    }
+    
 
+}

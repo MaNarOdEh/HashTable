@@ -251,14 +251,12 @@ public class LinkedList<K, V> {
             return "{}";
         }
         StringBuilder builder = new StringBuilder();
-        builder.append("{");
         Node cNode = head;
         while (cNode != null) {
             builder.append(cNode.toString() + ",");
             cNode = cNode.getNext();
         }
         builder.deleteCharAt(builder.length() - 1);
-        builder.append("}");
         return builder.toString();
     }
 
